@@ -2,7 +2,7 @@
 
 echo "Hola Mundo"; // impresion por pantalla
 
-/**
+/***********
  * Variables
 */
 
@@ -11,7 +11,7 @@ $edad = 30; // entero
 $promedio = 3.5; // flotante
 $esAlumno = true; // booleano
 
-/**
+/************************************************
  * Constantes -> su valor no puede ser modificado
 */
 
@@ -32,7 +32,7 @@ $numero = 20.5;
 echo intval($numero); // forzar la conversion a tipo int
 echo strval($numero); // forzar la conversion a tipo string
 
-/**
+/*******************************
  * Concatenacion e interpolacion
 */
 
@@ -45,7 +45,7 @@ echo $palabra . " " . $palabra2;
 // interpolacion -> inyectar una variable dentro de un string
 echo "{$palabra} {$palabra2}"; // la interpolacion solo puede realizarse usando comillas dobles
 
-/**
+/*****************************************
  * Extraer y buscar palabras en una cadena
 */
 
@@ -71,7 +71,7 @@ $formato = "%s-%s-%s";
 
 echo sprintf($formato, $anio, $mes, $dia); // generar un string formateado
 
-/**
+/************
  * Operadores
 */
 
@@ -88,4 +88,70 @@ echo $aproboV2;
 $promedioV3;
 $aproboV3 = $promedioV3 ?? 100; // si la variable evaluada no contiene nigun valor, por defecto se le asigna el valor 100
 echo $aproboV3;
+
+/************************
+ * Estructuras de control
+*/
+
+// match v8
+$camisa = "Verde";
+
+// retorna el valor que coincide con la evaluacion realizada (PHP v8+)
+echo match($camisa) {
+    "Amarillo" => "La camisa es amarilla",
+    "Verde" => "La camisa es verde"
+};
+
+/**********
+ * Arreglos
+*/
+$array = ["Martin", "Eduardo"];
+echo $array[0]; // se accede al elemento ubicado en la primera posicion del arreglo
+
+// iterar el contenido de un arreglo mediante un foreach
+foreach($array as $index => $value) {
+    echo "{$index} - {$value}";
+}
+
+// arreglos asociativos
+$datos = [
+    "nombre" => "Martin",
+    "apellido" => "Wilches",
+    "edad" => 31
+];
+
+// se accede al contenido del arreglo asociativo a traves de los valores no por indices
+var_dump($datos["apellido"]);
+
+foreach($datos as $key => $value) {
+    echo "{$key} - {$value}";
+}
+
+// actualizar un arreglo
+$alumnos = ["Martin", "Eduardo"];
+$info = [
+    "nombre" => "Martin",
+    "edad" => 31
+];
+
+// agregar un elemento a un arreglo
+array_push($alumnos,"Maria");
+$info["ciudad"] = "Bucaramanga";
+
+var_dump($info);
+
+// eliminar un elemento de un arreglo
+unset($alumnos[1]);
+
+var_dump($alumnos);
+
+// retornar la longitud de un arreglo
+var_dump(count($alumnos));
+
+// reemplazar un valor dentro de un arreglo (no modifica el arreglo original)
+$test = array_replace($info, [
+    "edad" => 32
+]);
+
+var_dump($test);
 ?>
