@@ -70,4 +70,22 @@ $dia = "25";
 $formato = "%s-%s-%s";
 
 echo sprintf($formato, $anio, $mes, $dia); // generar un string formateado
+
+/**
+ * Operadores
+*/
+
+// operador ternario
+$promedio = 5;
+$aprobo = $promedio >= 7 ? "Aprobo" : "Reprobo";
+
+// operador de elvis
+$promedioV2 = null;
+$aproboV2 = $promedioV2 ?: 15; // por defecto el valor de la variable $aproboV2 sera 15
+echo $aproboV2;
+
+// operador fusion null
+$promedioV3;
+$aproboV3 = $promedioV3 ?? 100; // si la variable evaluada no contiene nigun valor, por defecto se le asigna el valor 100
+echo $aproboV3;
 ?>
