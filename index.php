@@ -154,4 +154,44 @@ $test = array_replace($info, [
 ]);
 
 var_dump($test);
+
+/***********
+ * Funciones
+*/
+
+function obtenerEdad() {
+    $edad = 2025 - 1994;
+    echo $edad;
+}
+
+obtenerEdad(); // ejecutar funcion
+
+// parametros
+function obtenerEdadV2($anioActual, $anioCalculo = 2020) {
+    $edad = $anioActual - $anioCalculo;
+    echo $edad;
+    return $edad; // se asigna el valor a la funcion y se finaliza inmediatamente su ejecucion
+}
+
+// la funcion recibe parametros desde su invocacion como argumentos
+$edad = obtenerEdadV2(2025);
+echo $edad;
+
+// declaraciones de tipo escalar
+// declare(strict_types= 1); // el modo estricto obliga a que el parametro recibido por la funcion sea de tipo entero / sin el modo estricto se aceptan valores decimales / debe definirse al inicio del script
+function haceCienAnios(int $anio) {
+    return $anio - 100;
+}
+
+// en las declaraciones de tipo escalara, el parametro de la funcion no puede ser de un tipo distinto a numero
+echo haceCienAnios(2025);
+
+// funciones anonimas
+$mensaje = "El resultado de la suma es: ";
+
+$suma = function($num1) use ($mensaje) { // las  funciones anonimas si aceptan variables externas padadas mediante `use`
+    return $mensaje . $num1 + 100;
+};
+
+echo $suma(20); // la funcion anonima es asignada a una variable llamada `$suma`
 ?>
